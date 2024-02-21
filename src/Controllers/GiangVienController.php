@@ -19,7 +19,6 @@ class GiangVienController extends Controller {
     }
 
     public function add() {
-
         if ( !empty( $_POST ) ) {
 
             $_SESSION[ 'errors' ] = [];

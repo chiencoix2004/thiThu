@@ -23,10 +23,7 @@ class Model {
         echo "Kết nối thất bại: " . $PDOException->getMessage();
         die;
     }
-
-    
    }
-
    public function __destruct(){
     $this->conn = null;
     
