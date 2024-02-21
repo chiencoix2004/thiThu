@@ -1,0 +1,33 @@
+<?php $_shouldextend[1]=1; ?>
+
+<?php $this->startSection('title'); ?>
+ Danh sách giảng viên
+<?php $this->stopSection(); ?>
+
+<?php $this->startSection('content'); ?>
+<a href="/giangvien/add" class="btn btn-warning">Thêm</a>
+ <table class="table">
+ <tr>
+ <th>ID</th>
+ <th>Name</th>
+ <th>Email</th>
+ <th>Phone</th>
+ <th>Action</th>
+ </tr>
+ <?php $__currentLoopData = $giangViens; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $giangVien): $loop = $this->incrementLoopIndices();  ?>
+ <tr>
+ <td><?php echo \htmlentities($giangVien['id']??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($giangVien['name']??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($giangVien['email']??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($giangVien['phone']??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td>
+ <a href="/giangvien/<?php echo \htmlentities($giangVien['id']??'', ENT_QUOTES, 'UTF-8', false); ?>/update" class="btn btn-warning">Sửa</a>
+ <a href="/giangvien/<?php echo \htmlentities($giangVien['id']??'', ENT_QUOTES, 'UTF-8', false); ?>/delete" class="btn btn-danger" onclick="return confirm('có chắc xóa khônng')">Xóa</a> 
+ </td>
+ </tr>
+ 
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </table>
+<?php $this->stopSection(); ?>
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('master'); } ?>
